@@ -1,0 +1,85 @@
+<h1>{{title}}</h1>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    border: 2px solid black;  
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    color: lightgoldenrodyellow;
+    background-color: coral;
+  }
+
+.zero{
+   background-color: palegreen;
+}
+
+
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Stars</th>
+      <th>Reviews</th>
+      <th>Category</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+        {{!-- {{#if reviews }}    step 8 --}}
+            {{!-- <tr>
+                <td>{{title}}</td>
+                <td>{{price}}</td>
+                <td>{{stars}}</td>
+                <td>{{categoryName}}</td>
+                <td><img src="{{imgUrl}}" alt="{{title}}" style="max-width: 100px; max-height: 100px;"></td>
+            </tr> --}}
+        {{!-- {{/if}} --}}
+
+        {{!-- <tr>     step 9
+          <td>{{this.title}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.stars}}</td> --}}
+          {{!-- <td class="{{#if (notZero this.reviews)}}{{else}}highlighted-cell{{/if}}">{{changeZero this.reviews}}</td>
+          <td>{{this.categoryName}}</td>
+          <td>
+            <img src={{this.imgUrl}} alt="" />
+          </td>
+        </tr> --}}
+
+        
+         {{#if (notZero this.reviews)}}
+        <tr class="display">
+          <td>{{this.title}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.stars}}</td>
+          <td>{{this.reviews}}</td>
+          <td>{{this.categoryName}}</td>
+          <td>
+            <img src={{this.imgUrl}} alt="" />
+          </td>
+        </tr>
+      {{else}}
+        <tr class="zero">
+          <td>{{this.title}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.stars}}</td>
+          <td>{{this.reviews}}</td>
+          <td>{{this.categoryName}}</td>
+          <td>
+            <img src={{this.imgUrl}} alt="" />
+          </td>
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
